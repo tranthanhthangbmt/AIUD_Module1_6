@@ -308,10 +308,8 @@ const app = {
             { key: 'D', text: question.DAnswer }
         ];
 
-        // Shuffle options if in Test Mode
-        if (this.state.isTestMode) {
-            this.shuffleArray(optionKeys);
-        }
+        // Always shuffle options for randomness
+        this.shuffleArray(optionKeys);
 
         const isAnsweredCorrectly = this.state.userResults[qIndex] === 'correct';
 
