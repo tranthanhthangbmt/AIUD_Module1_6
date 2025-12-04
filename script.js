@@ -2,8 +2,8 @@ const app = {
     config: {
         modules: [
             { name: "Module 1: Khai thác dữ liệu và thông tin", file: "DB/MD1-120 câu_updated.csv" },
-            { name: "Module 2: Nền tảng công nghệ số", file: "DB/MD2-120 câu_updated.csv" },
-            { name: "Module 3: An toàn thông tin", file: "DB/MD3-120 câu_updated.csv" },
+            { name: "Module 2: Nền tảng công nghệ số", file: "DB/MD2_fixed.csv" },
+            { name: "Module 3: An toàn thông tin", file: "DB/MD3_test.csv" },
             { name: "Module 4: Đạo đức và pháp luật", file: "DB/MD4-120 câu_updated.csv" },
             { name: "Module 5: Ứng dụng CNTT", file: "DB/MD5-120 câu_updated.csv" },
             { name: "Module 6: Giải quyết vấn đề", file: "DB/MD6-120 câu_updated.csv" }
