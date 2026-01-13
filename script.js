@@ -1,12 +1,12 @@
 const app = {
     config: {
         modules: [
-            { name: "Module 1: Khai thác dữ liệu và thông tin", file: "DB/MD1-120 câu_updated.csv" },
-            { name: "Module 2: Nền tảng công nghệ số", file: "DB/MD2_fixed.csv" },
-            { name: "Module 3: An toàn thông tin", file: "DB/MD3_test.csv" },
-            { name: "Module 4: Đạo đức và pháp luật", file: "DB/MD4-120 câu_updated.csv" },
-            { name: "Module 5: Ứng dụng CNTT", file: "DB/MD5-120 câu_updated.csv" },
-            { name: "Module 6: Giải quyết vấn đề", file: "DB/MD6-120 câu_updated.csv" }
+            { name: "Module 1: Khai thác dữ liệu và thông tin", file: "DB/MD1.csv?v=2" },
+            { name: "Module 2: Giao tiếp và hợp tác trong môi trường số", file: "DB/MD2.csv?v=2" },
+            { name: "Module 3: Sáng tạo nội dung số", file: "DB/MD3.csv?v=2" },
+            { name: "Module 4: An toàn thông tin", file: "DB/MD4.csv?v=2" },
+            { name: "Module 5: Giải quyết vấn đề", file: "DB/MD5.csv?v=2" },
+            { name: "Module 6: Ứng dụng trí tuệ nhân tạo", file: "DB/MD6.csv?v=2" }
         ]
     },
     state: {
@@ -206,17 +206,21 @@ const app = {
     },
 
     processData: function (data) {
-        this.state.allQuestions = data;
+        // Filter out empty rows or rows without a question content
+        // This safeguards against "ghost" questions from trailing empty lines in CSV
+        const validData = data.filter(row => row.QuestionContent && row.QuestionContent.trim() !== "");
+
+        this.state.allQuestions = validData;
         this.state.parts = [];
 
         const CHUNK_SIZE = 30;
-        const totalQuestions = data.length;
+        const totalQuestions = validData.length;
         const totalParts = Math.ceil(totalQuestions / CHUNK_SIZE);
 
         for (let i = 0; i < totalParts; i++) {
             const start = i * CHUNK_SIZE;
             const end = Math.min(start + CHUNK_SIZE, totalQuestions);
-            const chunk = data.slice(start, end);
+            const chunk = validData.slice(start, end);
 
             this.state.parts.push({
                 id: i + 1,
